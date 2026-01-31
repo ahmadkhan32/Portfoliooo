@@ -1,0 +1,23 @@
+{
+    "version": 2,
+    "builds": [
+        {
+            "src": "antigravity-frontend/package.json",
+            "use": "@vercel/next"
+        },
+        {
+            "src": "antigravity-backend/src/server.js",
+            "use": "@vercel/node"
+        }
+    ],
+    "routes": [
+        {
+            "src": "/api/(.*)",
+            "dest": "/antigravity-backend/src/server.js"
+        },
+        {
+            "src": "/(.*)",
+            "dest": "/antigravity-frontend/$1"
+        }
+    ]
+}
